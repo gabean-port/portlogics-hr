@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>채용 · 입사 · 온보딩 가이드 | PORTLOGICS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0F2544; --navy-mid: #1A3A6B; --navy-light: #E8EEF8;
+    --blue: #2563EB; --blue-light: #EFF6FF; --blue-text: #1D4ED8;
+    --green: #059669; --green-light: #ECFDF5; --green-text: #065F46;
+    --amber: #D97706; --amber-light: #FFFBEB; --amber-text: #92400E;
+    --red: #DC2626; --red-light: #FEF2F2; --red-text: #991B1B;
+    --gray-50: #F8F9FC; --gray-100: #F1F3F8; --gray-200: #E2E6EF;
+    --gray-400: #9BA3B4; --gray-600: #4B5468; --gray-800: #1E2535;
+    --white: #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(15,37,68,.07), 0 1px 2px rgba(15,37,68,.05);
+    --shadow-md: 0 4px 12px rgba(15,37,68,.10), 0 2px 4px rgba(15,37,68,.06);
+    --radius: 12px; --radius-sm: 8px;
+  }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; min-height: 100vh; }
+
+  /* —— Header —— */
+  .header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 36px 24px 32px; position: relative; overflow: hidden; }
+  .header::before { content:''; position:absolute; top:-60px; right:-60px; width:240px; height:240px; background:rgba(255,255,255,.04); border-radius:50%; }
+  .header::after  { content:''; position:absolute; bottom:-40px; left:30%; width:160px; height:160px; background:rgba(255,255,255,.03); border-radius:50%; }
+  .header-inner { max-width: 880px; margin: 0 auto; position: relative; }
+  .header-eyebrow { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:600; letter-spacing:.08em; color:rgba(255,255,255,.85); text-transform:uppercase; margin-bottom:14px; }
+  .header-dot { width:6px; height:6px; border-radius:50%; background:#60A5FA; }
+  .header h1 { font-size:26px; font-weight:700; color:#fff; letter-spacing:-.02em; margin-bottom:6px; }
+  .header-sub { font-size:14px; color:rgba(255,255,255,.6); }
+
+  /* —— Section Tabs —— */
+  .section-tabs-wrapper { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(15,37,68,.06); }
+  .section-tabs { max-width: 880px; margin: 0 auto; display: flex; padding: 0 24px; }
+  .section-tab {
+    padding: 16px 24px; font-size: 14px; font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif; color: var(--gray-400);
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; transition: all .2s; white-space: nowrap;
+  }
+  .section-tab:hover { color: var(--gray-600); }
+  .section-tab.active { color: var(--navy-mid); border-bottom-color: var(--blue); font-weight: 700; }
+
+  /* —— Main —— */
+  .main { max-width: 880px; margin: 0 auto; padding: 28px 24px 60px; }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+
+  /* —— Role Filter Tabs —— */
+  .role-tabs { display: flex; gap: 0; margin-bottom: 22px; background: var(--gray-100); border-radius: 10px; padding: 4px; width: fit-content; }
+  .role-tab {
+    padding: 9px 24px; font-size: 13px; font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif;
+    border: none; background: none; border-radius: 7px;
+    cursor: pointer; transition: all .18s; color: var(--gray-400);
+  }
+  .role-tab:hover { color: var(--gray-600); }
+  .role-tab.r-all.active  { background: var(--white); color: var(--navy-mid); font-weight: 700; box-shadow: var(--shadow-sm); }
+  .role-tab.r-hq.active   { background: var(--blue-light); color: var(--blue-text); font-weight: 700; box-shadow: var(--shadow-sm); }
+  .role-tab.r-br.active   { background: var(--green-light); color: var(--green-text); font-weight: 700; box-shadow: var(--shadow-sm); }
+
+  /* —— Legend —— */
+  .legend { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
+  .legend-badge { display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:600; }
+  .badge-hq   { background:var(--blue-light);  color:var(--blue-text); }
+  .badge-br   { background:var(--green-light); color:var(--green-text); }
+  .badge-both { background:var(--amber-light); color:var(--amber-text); }
+
+  /* —— Process Cards —— */
+  .process-list { display:flex; flex-direction:column; gap:10px; }
+  .process-card { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); padding:18px 20px; box-shadow:var(--shadow-sm); transition:box-shadow .2s; }
+  .process-card:hover { box-shadow:var(--shadow-md); }
+  .process-card.collab   { border-left:3px solid var(--amber); }
+  .process-card.hq-lead  { border-left:3px solid var(--blue); }
+  .process-card.br-lead  { border-left:3px solid var(--green); }
+
+  .card-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .step-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+  .hq-lead .step-num  { background:var(--blue-light);  color:var(--blue-text); }
+  .br-lead .step-num  { background:var(--green-light); color:var(--green-text); }
+  .collab  .step-num  { background:var(--amber-light); color:var(--amber-text); }
+  .card-title { font-size:15px; font-weight:600; color:var(--gray-800); }
+
+  .card-body { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .role-block { border-radius:var(--radius-sm); padding:11px 13px; }
+  .role-block.hq-block { background:var(--blue-light); }
+  .role-block.br-block { background:var(--green-light); }
+  .role-label { font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:5px; }
+  .hq-block .role-label { color:var(--blue-text); }
+  .br-block .role-label { color:var(--green-text); }
+  .role-content { font-size:13px; color:var(--gray-600); line-height:1.6; }
+  .role-none { color:var(--gray-400); font-style:italic; }
+
+  .detail-box { margin-top:10px; grid-column:1/-1; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:12px 14px; }
+  .detail-label { font-size:11px; font-weight:700; color:var(--gray-400); letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; }
+  .detail-steps { display:flex; flex-direction:column; gap:7px; }
+  .detail-step { display:flex; gap:10px; align-items:flex-start; }
+  .detail-step-num { width:20px; height:20px; border-radius:50%; background:var(--navy-light); color:var(--navy-mid); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; margin-top:2px; }
+  .detail-step-text { font-size:13px; color:var(--gray-600); line-height:1.6; }
+  .detail-step-text strong { color:var(--navy-mid); font-weight:600; }
+
+  .flow-arrow { background:var(--amber-light); border:1px dashed var(--amber); border-radius:var(--radius-sm); padding:9px 13px; margin-top:8px; grid-column:1/-1; font-size:12px; color:var(--amber-text); display:flex; align-items:center; gap:8px; font-weight:500; }
+
+  /* —— Interview Warning Toggle —— */
+  .warn-toggle-btn { display:inline-flex; align-items:center; gap:6px; margin-top:12px; grid-column:1/-1; padding:7px 14px; border-radius:20px; background:var(--red-light); border:1px solid #FECACA; color:var(--red-text); font-size:12px; font-weight:600; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all .18s; }
+  .warn-toggle-btn:hover { background:#FEE2E2; }
+  .warn-toggle-btn .arrow { font-size:10px; transition:transform .2s; }
+  .warn-toggle-btn.open .arrow { transform:rotate(180deg); }
+  .warn-panel { display:none; grid-column:1/-1; margin-top:8px; border-radius:var(--radius-sm); border:1px solid #FECACA; overflow:hidden; }
+  .warn-panel.open { display:block; }
+  .warn-panel-intro { background:var(--red-light); padding:12px 14px; font-size:12px; color:var(--red-text); line-height:1.6; }
+  .warn-panel-intro strong { font-weight:600; }
+  .warn-section { padding:12px 14px; border-top:1px solid #FECACA; background:var(--white); }
+  .warn-section-title { font-size:11px; font-weight:700; color:var(--gray-800); letter-spacing:.04em; margin-bottom:10px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .warn-tag { display:inline-block; padding:1px 7px; border-radius:8px; font-size:10px; font-weight:700; }
+  .warn-tag-law      { background:var(--red-light);   color:var(--red-text); }
+  .warn-tag-practice { background:var(--amber-light); color:var(--amber-text); }
+  .warn-list { display:flex; flex-direction:column; gap:8px; }
+  .warn-item { border-radius:var(--radius-sm); padding:11px 13px; display:flex; gap:10px; align-items:flex-start; }
+  .warn-item.law-item      { background:#FFF5F5; border-left:3px solid var(--red); }
+  .warn-item.practice-item { background:#FFFBF0; border-left:3px solid var(--amber); }
+  .warn-icon { font-size:14px; flex-shrink:0; margin-top:1px; }
+  .warn-body { flex:1; }
+  .warn-title { font-size:12px; font-weight:600; color:var(--gray-800); margin-bottom:3px; }
+  .warn-desc  { font-size:12px; color:var(--gray-600); line-height:1.55; }
+  .warn-example { margin-top:6px; padding:7px 9px; background:rgba(255,255,255,.8); border-radius:5px; font-size:11px; color:var(--gray-600); line-height:1.65; display:flex; flex-direction:column; gap:3px; }
+  .warn-example .bad  { color:var(--red);   font-weight:600; }
+  .warn-example .good { color:var(--green); font-weight:600; }
+
+  .section-intro { background:var(--navy-light); border:1px solid var(--gray-200); border-left:3px solid var(--navy-mid); border-radius:var(--radius-sm); padding:13px 16px; margin-bottom:20px; font-size:13px; color:var(--gray-600); line-height:1.75; }
+  .section-intro strong { color:var(--navy-mid); }
+
+  /* —— Resource Link Cards —— */
+  .resource-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .resource-card { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); padding:22px 20px; box-shadow:var(--shadow-sm); transition:box-shadow .2s; display:flex; flex-direction:column; gap:10px; }
+  .resource-card:hover { box-shadow:var(--shadow-md); }
+  .resource-card-icon { font-size:26px; line-height:1; }
+  .resource-card-title { font-size:15px; font-weight:700; color:var(--gray-800); }
+  .resource-card-desc { font-size:13px; color:var(--gray-400); line-height:1.6; flex:1; }
+  .resource-link { display:inline-flex; align-items:center; gap:6px; padding:8px 14px; background:var(--navy-mid); color:#fff; border-radius:7px; font-size:12px; font-weight:600; font-family:'Noto Sans KR',sans-serif; text-decoration:none; transition:background .18s; width:fit-content; margin-top:4px; }
+  .resource-link:hover { background:var(--navy); }
+  @media (max-width:600px) { .resource-grid { grid-template-columns:1fr; } }
+
+  .footer { max-width:880px; margin:0 auto; padding:0 24px 32px; text-align:center; font-size:12px; color:var(--gray-400); }
+
+  @media (max-width:600px) {
+    .header h1 { font-size:20px; }
+    .card-body { grid-template-columns:1fr; }
+    .section-tab { padding:14px 14px; font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow"><span class="header-dot"></span>PORTLOGICS HR</div>
+    <h1>채용 · 입사 · 온보딩 가이드</h1>
+    <p class="header-sub">본사 · 지사 간 역할 분담 안내</p>
+  </div>
+</header>
+
+<!-- —— Section Tabs —— -->
+<div class="section-tabs-wrapper">
+  <div class="section-tabs">
+    <button class="section-tab active" onclick="switchSection('recruit', this)">채용 프로세스</button>
+    <button class="section-tab"        onclick="switchSection('prepare', this)">입사 준비</button>
+    <button class="section-tab"        onclick="switchSection('onboard', this)">온보딩</button>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- —— 채용 프로세스 —— -->
+  <div class="section-panel active" id="panel-recruit">
+    <div class="role-tabs">
+      <button class="role-tab r-all active" onclick="setFilter('recruit','all',this)">전체</button>
+      <button class="role-tab r-hq"         onclick="setFilter('recruit','hq',this)">본사</button>
+      <button class="role-tab r-br"         onclick="setFilter('recruit','br',this)">지사</button>
+    </div>
+    <div class="legend" id="legend-recruit">
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-hq">본사 주도</span></span>
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-br">지사 주도</span></span>
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-both">협업</span> 사전에 역할 경계 합의 필요</span>
+    </div>
+    <div class="process-list" id="list-recruit"></div>
+  </div>
+
+  <!-- —— 입사 준비 —— -->
+  <div class="section-panel" id="panel-prepare">
+    <div class="section-intro">
+      입사 최종 확정 후 <strong>본사에서 필요 사항을 확인한 뒤 지사에 진행을 요청</strong>드리는 방식으로 진행됩니다.<br>
+      추가로 공유해주실 사항이 있으시면 언제든지 <strong>HR 담당자에게 말씀</strong>해 주세요.
+    </div>
+    <div class="role-tabs">
+      <button class="role-tab r-all active" onclick="setFilter('prepare','all',this)">전체</button>
+      <button class="role-tab r-hq"         onclick="setFilter('prepare','hq',this)">본사</button>
+      <button class="role-tab r-br"         onclick="setFilter('prepare','br',this)">지사</button>
+    </div>
+    <div class="legend" id="legend-prepare">
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-hq">본사 주도</span></span>
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-br">지사 주도</span></span>
+      <span style="font-size:12px;color:var(--gray-600);display:flex;align-items:center;gap:6px"><span class="legend-badge badge-both">협업</span> 사전에 역할 경계 합의 필요</span>
+    </div>
+    <div class="process-list" id="list-prepare"></div>
+  </div>
+
+  <!-- —— 온보딩 —— -->
+  <div class="section-panel" id="panel-onboard">
+    <div class="section-intro">
+      입사 후 꼭 확인해야 할 규정과 업무 가이드입니다. 아래 링크에서 노션 페이지를 직접 확인해주세요.
+    </div>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <div class="resource-card-icon">📋</div>
+        <div class="resource-card-title">기본 규정</div>
+        <div class="resource-card-desc">회사의 기본 운영 규정 및 구성원으로서 알아야 할 사항</div>
+        <a class="resource-link" href="https://www.notion.so/292dd60e86f480c68b2eecdbff98343a" target="_blank">노션에서 보기 →</a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-icon">🕐</div>
+        <div class="resource-card-title">근무 규정</div>
+        <div class="resource-card-desc">근무 시간, 연차, 휴가 등 근무 관련 규정 안내</div>
+        <a class="resource-link" href="https://www.notion.so/28cdd60e86f480468f23f01bb5d5a72f" target="_blank">노션에서 보기 →</a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-icon">🎁</div>
+        <div class="resource-card-title">지원 규정</div>
+        <div class="resource-card-desc">복지, 지원금, 교육비 등 구성원 지원 제도 안내</div>
+        <a class="resource-link" href="https://www.notion.so/287dd60e86f480ccbcd5ecdf81f91076" target="_blank">노션에서 보기 →</a>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-icon">🔧</div>
+        <div class="resource-card-title">업무툴 사용 방법</div>
+        <div class="resource-card-desc">Slack, TOMS, PMS 등 PORTLOGICS 업무 도구 사용 가이드</div>
+        <a class="resource-link" href="https://www.notion.so/PORTLOGICS-265dd60e86f480f7805fc2c698f1765a?source=copy_link#321dd60e86f480a6b983c6c8506d2e6b" target="_blank">노션에서 보기 →</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">PORTLOGICS · HR Team · 채용 · 입사 · 온보딩 가이드</footer>
+
+<script>
+/* ════════════════════════════════════════
+   데이터
+════════════════════════════════════════ */
+
+const recruitSteps = [
+  {
+    num:1, title:'채용 공고 업로드', lead:'both',
+    hq:'Flex 채용 오픈 요청서 확인 후 채용 공고 업로드',
+    br:'Flex → 워크플로우 → 채용 오픈 요청서 작성',
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:2, title:'서류 검토', lead:'both',
+    hq:'1차 이력서 검토 후 지사에 전달',
+    br:'2차 이력서 검토 후 인터뷰 진행 여부 회신',
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:3, title:'인터뷰 일정 조율 및 안내', lead:'hq',
+    hq:'인터뷰 진행 확정 인원 확인 후 후보자에게 일정 조율 및 안내',
+    br:'면접관 가용 시간 본사에 사전 공유',
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:4, title:'인터뷰 진행', lead:'br',
+    hq:null,
+    br:'확정된 일정에 인터뷰 진행',
+    detail:{
+      label:'지사 세부 진행 절차',
+      steps:[
+        { text:'<strong>TIRO (티로)</strong>를 켜고 인터뷰 시작 — 미팅 내용 실시간 기록' },
+        { text:'인터뷰 종료 후 TIRO 요약 내용을 바탕으로 <strong>합격 사유 정리</strong> (직무 역량·경험·태도 등 근거 기반)' },
+        { text:'정리된 합격 사유를 <strong>본사 HR 및 조직장에게 전달</strong>' },
+        { text:'인터뷰 중 <strong>채용 확정 발언 절대 금지</strong> — "출근하세요", "합격이에요" 등 절대 사용 금지' }
+      ]
+    },
+    flowNote:null, hasWarn:true
+  },
+  {
+    num:5, title:'인터뷰 결과 공유', lead:'both',
+    hq:'지사 의견 검토 후 최종 합격 여부 결정. 합격 확정 시 지사에 오퍼레터 발송 요청서 작성 요청',
+    br:'TIRO 기반 합격 사유 정리 후 본사 HR 및 조직장에게 전달',
+    detail:null, flowNote:'본사 최종 OK → 지사에 오퍼레터 발송 요청서 작성 요청', hasWarn:false
+  },
+  {
+    num:6, title:'오퍼레터 발송', lead:'both',
+    hq:'Flex 오퍼레터 발송 요청서 확인 후 지원자에게 오퍼 발송 및 처우 협의',
+    br:'Flex → 워크플로우 → 오퍼레터 발송 요청서 작성',
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:7, title:'입사 안내', lead:'hq',
+    hq:'입사 확정 후 지원자와 소통 및 준비 사항 별도 안내',
+    br:'현지 환경 (좌석·장비·시스템 계정 등) 사전 준비 착수',
+    detail:null, flowNote:null, hasWarn:false
+  }
+];
+
+const prepareSteps = [
+  {
+    num:1, title:'근무 조건 확인', lead:'both',
+    hq:'근무요일·근무시간, 주말/야간 근무 여부, 입사 당일 출근 시간, 유선 전화 여부 등 지사에 확인 요청',
+    br:'본사 확인 요청 사항에 대해 확인 (근무시간, 입사 당일 출근 시간 등)',
+    detail:{
+      label:'본사 안내 기준',
+      steps:[
+        { text:'본사 기준 입사 당일 출근 시간: <strong>오전 9시 30분 출근 → 오후 6시 퇴근</strong>' },
+        { text:'지사 출근 시간이 다를 경우, 지사 담당자에게 별도 확인 후 안내' }
+      ]
+    },
+    flowNote:null, hasWarn:false
+  },
+  {
+    num:2, title:'장비 및 자리 세팅', lead:'both',
+    hq:'노트북 + 충전기 + 멀티허브 / 키보드 + 마우스 / 모니터 + HDMI / 유선전화 세팅 후 지사 발송<br><em style="font-size:12px;color:#6B7280">※ 지사에 유휴 장비가 있을 경우 해당 장비 사용</em>',
+    br:'모니터 받침대 / 책상 + 의자 + 서랍 준비 / 지문 등록 안내',
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:3, title:'계정 세팅', lead:'hq',
+    hq:'이메일 / Slack / TOMS·PMS / Flex 인사정보 / Google Workspace 계정 생성 및 권한 부여',
+    br:null,
+    detail:null, flowNote:null, hasWarn:false
+  },
+  {
+    num:4, title:'입사 당일 온보딩', lead:'br',
+    hq:null,
+    br:'입사 당일 일정 계획 수립 후 <strong>본사에 사전 전달</strong>',
+    detail:{
+      label:'일반적인 입사 당일 일정 (참고)',
+      steps:[
+        { text:'<strong>오전</strong>: 계정 및 사규·규정 온보딩' },
+        { text:'<strong>점심</strong>: 웰컴런치' },
+        { text:'<strong>오후</strong>: 팀 온보딩' }
+      ]
+    },
+    flowNote:null, hasWarn:false
+  },
+  {
+    num:5, title:'행정 처리', lead:'hq',
+    hq:'근로계약서 발송 및 서명 안내 / 4대보험 취득 신고 / 급여 계좌 수령 / Flex 입사 처리',
+    br:null,
+    detail:null, flowNote:null, hasWarn:false
+  }
+];
+
+
+/* ════════════════════════════════════════
+   주의사항 데이터
+════════════════════════════════════════ */
+const practiceItems = [
+  {
+    icon:'🚫', title:'채용 확정 발언 절대 금지',
+    desc:'모든 합격 통보는 본사 HR을 통해서만 이루어집니다. 인터뷰 현장에서 합격을 암시하거나 확정 발언을 금지합니다.',
+    bad:'"다음 주부터 출근하세요" / "합격이에요" / "저희는 뽑을 것 같아요"',
+    good:'"결과는 HR팀에서 별도로 안내드릴 예정입니다."'
+  },
+  {
+    icon:'🎙️', title:'TIRO 사용 전 후보자 동의 확인',
+    desc:'인터뷰 시작 전 기록 도구 사용 여부를 안내하고 동의를 구하는 것이 바람직합니다.',
+    bad:null,
+    good:'"오늘 인터뷰는 내용 정리를 위해 회의 기록 도구를 사용합니다. 괜찮으실까요?"'
+  },
+  {
+    icon:'📝', title:'합격 사유는 근거 기반으로 작성',
+    desc:'단순 소감이 아닌 직무 역량·경험·태도 등 구체적 근거를 포함하여 본사 HR 및 조직장에게 전달합니다.',
+    bad:'"인상이 좋았고 이야기가 잘 통했습니다."',
+    good:'"○○ 업무 경험이 있으며, 유사 상황 대처 방식이 팀 방향과 부합합니다."'
+  },
+  {
+    icon:'💰', title:'처우 조건 언급 금지',
+    desc:'연봉, 복지, 입사 조건 등 처우 관련 내용은 인터뷰 현장에서 언급하지 않습니다. 처우 협의는 오퍼레터 발송 후 본사 HR이 진행합니다.',
+    bad:'"연봉은 대략 ○○ 정도 드릴 수 있을 것 같아요."',
+    good:'"처우 관련 사항은 합격 후 HR팀에서 별도로 안내드릴 예정입니다."'
+  }
+];
+
+const lawItems = [
+  {
+    icon:'⚖️', title:'신체·외모 관련 질문 금지',
+    desc:'키, 체중, 외모, 장애 여부 등 직무와 무관한 신체 조건을 질문해서는 안 됩니다.',
+    bad:'"키가 어떻게 되세요?" / "건강에 특이사항 없으실까요?"',
+    good:'"이 직무에 필요한 체력적 요건은 ○○입니다. 수행 가능하실까요?"'
+  },
+  {
+    icon:'⚖️', title:'혼인·가족 관련 질문 금지',
+    desc:'결혼 여부, 임신 계획, 가족 구성원에 대한 질문은 남녀고용평등법 위반입니다.',
+    bad:'"결혼하셨나요?" / "아이 계획이 있으신가요?"',
+    good:'"출장이나 야근이 발생할 수 있는데, 일정 조율에 어려움이 없으실까요?"'
+  },
+  {
+    icon:'⚖️', title:'나이·출신 관련 질문 금지',
+    desc:'나이 기준 차별은 고용상 연령차별금지법 위반입니다. 출신 지역·학교를 기준으로 평가해서는 안 됩니다.',
+    bad:'"나이가 어떻게 되세요?" / "어느 지역 출신이세요?"',
+    good:'"경력 기간과 주요 업무 경험을 말씀해 주시겠어요?"'
+  },
+  {
+    icon:'⚖️', title:'종교·정치 성향 질문 금지',
+    desc:'종교, 정치적 견해, 사상 등은 직무 평가와 무관하며 질문 자체가 차별에 해당합니다.',
+    bad:'"종교가 있으신가요?" / "어떤 정치 성향이세요?"',
+    good:null
+  }
+];
+
+/* ════════════════════════════════════════
+   렌더링
+════════════════════════════════════════ */
+const leadMap = {
+  hq:   { badge:'badge-hq',   text:'본사 주도', cardClass:'hq-lead' },
+  br:   { badge:'badge-br',   text:'지사 주도', cardClass:'br-lead' },
+  both: { badge:'badge-both', text:'협업',      cardClass:'collab'  }
+};
+
+const filterState = { recruit:'all', prepare:'all', onboard:'all' };
+
+function buildWarnPanel(id) {
+  function buildItems(items, cls) {
+    return items.map(item => `
+      <div class="warn-item ${cls}">
+        <div class="warn-icon">${item.icon}</div>
+        <div class="warn-body">
+          <div class="warn-title">${item.title}</div>
+          <div class="warn-desc">${item.desc}</div>
+          ${item.bad||item.good?`<div class="warn-example">
+            ${item.bad ?`<div><span class="bad">✗ 금지:</span> ${item.bad}</div>`:''}
+            ${item.good?`<div><span class="good">✓ 권장:</span> ${item.good}</div>`:''}
+          </div>`:''}
+        </div>
+      </div>`).join('');
+  }
+  return `<div class="warn-panel" id="${id}">
+    <div class="warn-panel-intro"><strong>⚠ 인터뷰 진행 전 반드시 숙지해주세요.</strong><br>실무 주의사항과 법적 의무사항으로 구분됩니다. 법적 의무사항은 위반 시 법적 책임이 발생할 수 있으므로 특히 주의가 필요합니다.</div>
+    <div class="warn-section">
+      <div class="warn-section-title"><span class="warn-tag warn-tag-practice">실무 주의사항</span> 채용 피해 방지 및 내부 프로세스 준수</div>
+      <div class="warn-list">${buildItems(practiceItems,'practice-item')}</div>
+    </div>
+    <div class="warn-section">
+      <div class="warn-section-title"><span class="warn-tag warn-tag-law">법적 의무사항</span> 채용 과정 차별 금지 — 남녀고용평등법 · 고용상 연령차별금지법</div>
+      <div class="warn-list">${buildItems(lawItems,'law-item')}</div>
+    </div>
+  </div>`;
+}
+
+function toggleWarn(btnEl, panelId) {
+  const panel = document.getElementById(panelId);
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btnEl.classList.toggle('open', !isOpen);
+  btnEl.querySelector('.arrow').textContent = isOpen ? '▼' : '▲';
+}
+
+function renderList(steps, listId, legendId, filter) {
+  const legend = document.getElementById(legendId);
+  legend.style.display = filter === 'all' ? 'flex' : 'none';
+
+  let html = '';
+  steps.forEach(s => {
+    const l = leadMap[s.lead];
+    let bodyContent = '';
+    const warnPanelId = `warn-${listId}-${s.num}`;
+
+    if (filter === 'hq') {
+      if (!s.hq) return;
+      bodyContent = `<div class="role-block hq-block" style="grid-column:1/-1"><div class="role-label">본사 (HQ) 역할</div><div class="role-content">${s.hq}</div></div>`;
+    } else if (filter === 'br') {
+      if (!s.br) return;
+      bodyContent = `<div class="role-block br-block" style="grid-column:1/-1"><div class="role-label">지사 (Branch) 역할</div><div class="role-content">${s.br}</div></div>`;
+    } else {
+      bodyContent = `
+        <div class="role-block hq-block"><div class="role-label">본사 (HQ)</div><div class="role-content${!s.hq?' role-none':''}">${s.hq||'—'}</div></div>
+        <div class="role-block br-block"><div class="role-label">지사 (Branch)</div><div class="role-content${!s.br?' role-none':''}">${s.br||'—'}</div></div>`;
+    }
+
+    let detailHTML = '';
+    if (s.detail && (filter === 'all' || filter === 'br' || (filter === 'hq' && s.detail.label.includes('본사')))) {
+      detailHTML = `<div class="detail-box"><div class="detail-label">${s.detail.label}</div><div class="detail-steps">` +
+        s.detail.steps.map((ds,i)=>`<div class="detail-step"><div class="detail-step-num">${i+1}</div><div class="detail-step-text">${ds.text}</div></div>`).join('') +
+        `</div></div>`;
+    }
+
+    let flowHTML = '';
+    if (s.flowNote && (filter === 'all' || filter === 'hq')) {
+      flowHTML = `<div class="flow-arrow">→ ${s.flowNote}</div>`;
+    }
+
+    let warnHTML = '';
+    if (s.hasWarn && (filter === 'all' || filter === 'br')) {
+      warnHTML = `<button class="warn-toggle-btn" onclick="toggleWarn(this,'${warnPanelId}')">⚠ 인터뷰 주의사항 확인하기 <span class="arrow">▼</span></button>${buildWarnPanel(warnPanelId)}`;
+    }
+
+    html += `<div class="process-card ${l.cardClass}">
+      <div class="card-header">
+        <div class="step-num">${s.num}</div>
+        <div style="flex:1"><div class="card-title">${s.title}</div></div>
+        <span class="legend-badge ${l.badge}">${l.text}</span>
+      </div>
+      <div class="card-body">${bodyContent}${detailHTML}${flowHTML}${warnHTML}</div>
+    </div>`;
+  });
+
+  document.getElementById(listId).innerHTML = html || '<div style="padding:24px;text-align:center;color:var(--gray-400);font-size:13px;">해당 역할의 단계가 없습니다.</div>';
+}
+
+function setFilter(section, filter, btn) {
+  filterState[section] = filter;
+  const container = btn.closest('.role-tabs');
+  container.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const stepsMap = { recruit: recruitSteps, prepare: prepareSteps };
+  renderList(stepsMap[section], `list-${section}`, `legend-${section}`, filter);
+}
+
+function switchSection(name, btn) {
+  document.querySelectorAll('.section-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`panel-${name}`).classList.add('active');
+}
+
+/* 초기 렌더 */
+renderList(recruitSteps, 'list-recruit', 'legend-recruit', 'all');
+renderList(prepareSteps, 'list-prepare', 'legend-prepare', 'all');
+</script>
+</body>
+</html>
