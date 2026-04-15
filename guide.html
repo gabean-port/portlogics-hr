@@ -145,6 +145,60 @@
   .resource-link:hover { background:var(--navy); }
   @media (max-width:600px) { .resource-grid { grid-template-columns:1fr; } }
 
+  /* —— 수습 평가 —— */
+  .eval-overview { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); padding:20px 22px; margin-bottom:24px; box-shadow:var(--shadow-sm); }
+  .eval-overview-title { font-size:13px; font-weight:700; color:var(--gray-800); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+  .eval-flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .eval-flow-item { background:var(--navy-light); border-radius:7px; padding:8px 14px; font-size:12px; font-weight:600; color:var(--navy-mid); text-align:center; line-height:1.4; }
+  .eval-flow-item small { display:block; font-size:10px; font-weight:400; color:var(--gray-400); margin-top:2px; }
+  .eval-flow-arrow { color:var(--gray-400); font-size:14px; flex-shrink:0; }
+  .eval-phases { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+  .eval-phase { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:12px 14px; }
+  .eval-phase-title { font-size:12px; font-weight:700; color:var(--gray-800); margin-bottom:6px; }
+  .eval-phase-flow { font-size:12px; color:var(--gray-600); line-height:1.6; }
+  .eval-phase-flow .role-tag { display:inline-block; padding:1px 6px; border-radius:5px; font-size:10px; font-weight:700; margin-right:2px; }
+  .role-tag-org { background:var(--blue-light); color:var(--blue-text); }
+  .role-tag-mem { background:var(--green-light); color:var(--green-text); }
+
+  .eval-steps { display:flex; flex-direction:column; gap:16px; }
+  .eval-step { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow-sm); overflow:hidden; }
+  .eval-step-header { display:flex; align-items:center; gap:14px; padding:16px 20px; border-bottom:1px solid var(--gray-100); }
+  .eval-step-badge { width:32px; height:32px; border-radius:50%; background:var(--navy-mid); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  .eval-step-title { font-size:15px; font-weight:700; color:var(--gray-800); flex:1; }
+  .eval-step-body { padding:16px 20px; display:flex; flex-direction:column; gap:12px; }
+  .eval-step-desc { font-size:13px; color:var(--gray-600); line-height:1.7; }
+  .eval-step-desc strong { color:var(--gray-800); font-weight:600; }
+
+  .eval-info-box { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:13px 15px; display:flex; flex-direction:column; gap:8px; }
+  .eval-info-row { display:flex; gap:10px; font-size:13px; line-height:1.6; }
+  .eval-info-label { font-weight:700; color:var(--gray-800); white-space:nowrap; min-width:36px; }
+  .eval-info-val { color:var(--gray-600); }
+  .eval-info-val strong { color:var(--navy-mid); font-weight:600; }
+  .eval-info-divider { border:none; border-top:1px solid var(--gray-200); margin:2px 0; }
+  .eval-path { display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+  .eval-path-step { background:var(--navy-light); color:var(--navy-mid); border-radius:5px; padding:2px 8px; font-size:11px; font-weight:600; }
+  .eval-path-arrow { color:var(--gray-400); font-size:11px; }
+
+  .eval-sub-section { display:flex; flex-direction:column; gap:12px; }
+  .eval-sub-title { font-size:13px; font-weight:700; color:var(--gray-800); padding-bottom:6px; border-bottom:1px solid var(--gray-100); }
+
+  .eval-result-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .eval-result-card { border-radius:var(--radius-sm); padding:13px 14px; }
+  .eval-result-card.pass { background:var(--green-light); border:1px solid #A7F3D0; }
+  .eval-result-card.fail { background:var(--red-light); border:1px solid #FECACA; }
+  .eval-result-label { font-size:11px; font-weight:700; margin-bottom:7px; }
+  .pass .eval-result-label { color:var(--green-text); }
+  .fail .eval-result-label { color:var(--red-text); }
+  .eval-result-list { display:flex; flex-direction:column; gap:5px; }
+  .eval-result-item { font-size:12px; color:var(--gray-600); line-height:1.55; display:flex; gap:6px; }
+  .eval-result-item::before { content:'·'; flex-shrink:0; color:var(--gray-400); }
+
+  .eval-pdf-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+  .eval-pdf-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 14px; background:var(--white); border:1px solid var(--gray-200); border-radius:7px; font-size:12px; font-weight:600; color:var(--gray-600); text-decoration:none; transition:all .18s; }
+  .eval-pdf-btn:hover { border-color:var(--navy-mid); color:var(--navy-mid); }
+
+  @media (max-width:600px) { .eval-phases { grid-template-columns:1fr; } .eval-result-grid { grid-template-columns:1fr; } }
+
   .footer { max-width:880px; margin:0 auto; padding:0 24px 32px; text-align:center; font-size:12px; color:var(--gray-400); }
 
   @media (max-width:600px) {
@@ -170,6 +224,7 @@
     <button class="section-tab active" onclick="switchSection('recruit', this)">채용 프로세스</button>
     <button class="section-tab"        onclick="switchSection('prepare', this)">입사 준비</button>
     <button class="section-tab"        onclick="switchSection('onboard', this)">온보딩</button>
+    <button class="section-tab"        onclick="switchSection('probation', this)">수습 평가</button>
   </div>
 </div>
 
@@ -239,6 +294,220 @@
         <div class="resource-card-desc">Slack, TOMS, PMS 등 PORTLOGICS 업무 도구 사용 가이드</div>
         <a class="resource-link" href="https://www.notion.so/PORTLOGICS-265dd60e86f480f7805fc2c698f1765a?source=copy_link#321dd60e86f480a6b983c6c8506d2e6b" target="_blank">노션에서 보기 →</a>
       </div>
+    </div>
+  </div>
+
+
+  <!-- —— 수습 평가 —— -->
+  <div class="section-panel" id="panel-probation">
+
+    <!-- 절차 개요 -->
+    <div class="eval-overview">
+      <div class="eval-overview-title">🐣 수습 평가 절차 한눈에 보기</div>
+      <div class="eval-flow">
+        <div class="eval-flow-item">① 목표 설정<small>조직장</small></div>
+        <div class="eval-flow-arrow">→</div>
+        <div class="eval-flow-item">② 평가 항목 설정<small>수습 대상자</small></div>
+        <div class="eval-flow-arrow">→</div>
+        <div class="eval-flow-item">③ 1차 수습 평가<small>입사 1.5개월</small></div>
+        <div class="eval-flow-arrow">→</div>
+        <div class="eval-flow-item">③ 2차 수습 평가<small>입사 2.5개월</small></div>
+        <div class="eval-flow-arrow">→</div>
+        <div class="eval-flow-item">④ 결과 확정<small>HR 미팅</small></div>
+      </div>
+      <div class="eval-phases">
+        <div class="eval-phase">
+          <div class="eval-phase-title">1차 수습 평가</div>
+          <div class="eval-phase-flow">
+            <span class="role-tag role-tag-mem">팀원</span> 셀프 평가
+            → <span class="role-tag role-tag-org">1차 조직장</span> 하향 평가
+          </div>
+        </div>
+        <div class="eval-phase">
+          <div class="eval-phase-title">2차 수습 평가</div>
+          <div class="eval-phase-flow">
+            <span class="role-tag role-tag-mem">팀원</span> 셀프 평가
+            → <span class="role-tag role-tag-org">1차 조직장</span> 하향 평가
+            → <span class="role-tag role-tag-org">2차 조직장</span> 최종 평가
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eval-steps">
+
+      <!-- STEP 1 -->
+      <div class="eval-step">
+        <div class="eval-step-header">
+          <div class="eval-step-badge">1</div>
+          <div class="eval-step-title">목표 설정</div>
+        </div>
+        <div class="eval-step-body">
+          <div class="eval-step-desc">
+            <strong>1차 조직장</strong>이 수습 기간 동안 수습자가 달성할 목표를 설정하고, 각 목표별 가중치를 안내합니다.<br>
+            <span style="font-size:12px;color:var(--gray-400)">※ 가중치는 업무 중요도 및 업무량 등에 따라 설정합니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="eval-step">
+        <div class="eval-step-header">
+          <div class="eval-step-badge">2</div>
+          <div class="eval-step-title">평가 항목 설정</div>
+        </div>
+        <div class="eval-step-body">
+          <div class="eval-step-desc">
+            <strong>수습 대상자</strong>는 1차 조직장이 설정한 목표를 확인한 후, 목표 평가 항목 및 가중치를 <strong>1차 조직장에게 승인 요청</strong>합니다.
+          </div>
+          <div class="eval-info-box">
+            <div class="eval-info-row">
+              <div class="eval-info-label">시기</div>
+              <div class="eval-info-val">입사 후 <strong>2주 이내</strong></div>
+            </div>
+            <hr class="eval-info-divider">
+            <div class="eval-info-row">
+              <div class="eval-info-label">경로</div>
+              <div class="eval-info-val">
+                <div class="eval-path">
+                  <span class="eval-path-step">Flex</span>
+                  <span class="eval-path-arrow">→</span>
+                  <span class="eval-path-step">할일 (또는 홈피드)</span>
+                  <span class="eval-path-arrow">→</span>
+                  <span class="eval-path-step">평가 항목 작성 요청</span>
+                  <span class="eval-path-arrow">→</span>
+                  <span class="eval-path-step">목표 연동 및 가중치 입력</span>
+                  <span class="eval-path-arrow">→</span>
+                  <span class="eval-path-step">승인 요청</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="eval-step">
+        <div class="eval-step-header">
+          <div class="eval-step-badge">3</div>
+          <div class="eval-step-title">차수별 평가 진행</div>
+        </div>
+        <div class="eval-step-body">
+
+          <div class="eval-sub-section">
+            <div class="eval-sub-title">(1) 차수별 셀프 평가 작성</div>
+            <div class="eval-step-desc">셀프 평가 작성 요청 확인 후, 인사팀에서 안내한 기간에 맞춰 작성합니다.</div>
+            <div class="eval-info-box">
+              <div class="eval-info-row">
+                <div class="eval-info-label">시기</div>
+                <div class="eval-info-val">
+                  <strong>1차</strong> — 입사 후 1.5개월 차<br>
+                  <strong>2차</strong> — 입사 후 2.5개월 차
+                </div>
+              </div>
+              <hr class="eval-info-divider">
+              <div class="eval-info-row">
+                <div class="eval-info-label">경로</div>
+                <div class="eval-info-val">
+                  <div class="eval-path">
+                    <span class="eval-path-step">Flex</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">홈 피드 (알림)</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">셀프 평가 작성 요청</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">작성</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="eval-sub-section">
+            <div class="eval-sub-title">(2) 목표 달성도 업데이트</div>
+            <div class="eval-step-desc">셀프 평가 작성 시 목표 달성도를 함께 업데이트합니다.</div>
+            <div class="eval-info-box">
+              <div class="eval-info-row">
+                <div class="eval-info-label">시기</div>
+                <div class="eval-info-val">
+                  <strong>1차</strong> — 1차 셀프 평가 작성 시 목표 선택 후 달성도 업데이트<br>
+                  <strong>2차</strong> — 2차 셀프 평가 작성 시 목표 선택 후 달성도 업데이트
+                </div>
+              </div>
+              <hr class="eval-info-divider">
+              <div class="eval-info-row">
+                <div class="eval-info-label">경로</div>
+                <div class="eval-info-val">
+                  <div class="eval-path">
+                    <span class="eval-path-step">Flex</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">홈 피드 (알림)</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">셀프 평가 작성 요청</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">작성</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">목표 선택</span>
+                    <span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">달성도 기재</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 평가 항목 설명 -->
+          <div style="background:var(--amber-light);border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:12px 14px;font-size:12px;color:var(--amber-text);line-height:1.7;">
+            <strong style="display:block;margin-bottom:6px;">평가 항목 안내</strong>
+            · <strong>셀프 평가</strong> — 팀원이 업무 만족도 및 피드백 사항 등을 기록하여 조직장에게 공유<br>
+            · <strong>1차 조직장 하향 평가</strong> — 팀원의 셀프 평가를 토대로 1차 조직장이 평가 진행<br>
+            &nbsp;&nbsp;평가 항목: 업무 수행 능력 / 근무 태도 / 성장 및 개선의지<br>
+            · <strong>2차 조직장 하향 평가</strong> — 팀원 셀프 평가 & 1차 조직장 평가를 토대로 2차 조직장이 최종 평가 진행
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="eval-step">
+        <div class="eval-step-header">
+          <div class="eval-step-badge">4</div>
+          <div class="eval-step-title">평가 결과 확정</div>
+        </div>
+        <div class="eval-step-body">
+          <div class="eval-step-desc">1차·2차 조직장의 수습 평가를 토대로 <strong>HR 미팅</strong>을 진행합니다. (내용: 수습 기간 리뷰 및 수습 결과 안내)</div>
+          <div class="eval-result-grid">
+            <div class="eval-result-card pass">
+              <div class="eval-result-label">✓ 정규직 전환</div>
+              <div class="eval-result-list">
+                <div class="eval-result-item">수습 결과 <strong>A등급 이상</strong>인 자에 한하여 상호 협의 하에 계속 근무 진행</div>
+                <div class="eval-result-item">정규직 입사자의 경우 정규직 전환 계약 진행</div>
+                <div class="eval-result-item">수습 종료 축하 키트 지급</div>
+              </div>
+            </div>
+            <div class="eval-result-card fail">
+              <div class="eval-result-label">✕ 수습 종료</div>
+              <div class="eval-result-list">
+                <div class="eval-result-item">수습 결과 <strong>A등급 미만</strong>인 경우 수습 및 파견계약 종료</div>
+                <div class="eval-result-item">수습 종료 미팅 후 퇴직 미팅 진행</div>
+                <div class="eval-result-item">퇴직 관련 사항 별도 안내</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PDF 가이드 -->
+          <div style="margin-top:4px;">
+            <div style="font-size:12px;font-weight:700;color:var(--gray-600);margin-bottom:8px;">📎 평가 가이드 다운로드</div>
+            <div class="eval-pdf-row">
+              <span class="eval-pdf-btn">📄 평가자용 수습 평가 가이드 (PDF)</span>
+              <span class="eval-pdf-btn">📄 피평가자용 수습 평가 가이드 (PDF)</span>
+            </div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:6px;">※ PDF 파일은 별도 공유 예정입니다.</div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 
