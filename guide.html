@@ -199,6 +199,64 @@
 
   @media (max-width:600px) { .eval-phases { grid-template-columns:1fr; } .eval-result-grid { grid-template-columns:1fr; } }
 
+  /* —— Flex 가이드 토글 —— */
+  .guide-toggle-wrap { margin-top:12px; }
+  .guide-toggle-btn { display:flex; align-items:center; gap:7px; width:100%; padding:9px 14px; background:var(--navy-light); border:1px solid #C7D7F0; border-radius:var(--radius-sm); font-size:12px; font-weight:700; color:var(--navy-mid); font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all .18s; }
+  .guide-toggle-btn:hover { background:#D8E7F7; }
+  .guide-toggle-btn .g-arrow { margin-left:auto; font-size:10px; transition:transform .2s; }
+  .guide-toggle-btn.open .g-arrow { transform:rotate(180deg); }
+  .guide-content { display:none; margin-top:8px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); overflow:hidden; }
+  .guide-content.open { display:block; }
+
+  /* 피평가자/평가자 탭 */
+  .guide-role-tabs { display:flex; background:var(--gray-100); border-bottom:1px solid var(--gray-200); }
+  .guide-role-tab { flex:1; padding:9px 0; font-size:12px; font-weight:600; color:var(--gray-400); background:none; border:none; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all .18s; }
+  .guide-role-tab.active { background:var(--white); color:var(--navy-mid); border-bottom:2px solid var(--blue); }
+  .guide-role-pane { display:none; padding:16px; }
+  .guide-role-pane.active { display:block; }
+
+  /* Flex 화면 모의 UI */
+  .flex-screen { background:#F7F8FA; border:1px solid var(--gray-200); border-radius:8px; overflow:hidden; font-size:12px; }
+  .flex-screen-top { background:#fff; border-bottom:1px solid var(--gray-200); padding:8px 12px; display:flex; align-items:center; gap:8px; }
+  .flex-logo { font-size:10px; font-weight:700; color:#fff; background:#1A3A6B; border-radius:4px; padding:2px 6px; letter-spacing:.03em; }
+  .flex-breadcrumb { font-size:11px; color:var(--gray-400); display:flex; align-items:center; gap:4px; }
+  .flex-breadcrumb span { color:var(--navy-mid); font-weight:600; }
+  .flex-screen-body { display:grid; grid-template-columns:140px 1fr; }
+  .flex-nav { background:#fff; border-right:1px solid var(--gray-200); padding:10px 0; }
+  .flex-nav-item { padding:6px 12px; font-size:11px; color:var(--gray-400); display:flex; align-items:center; gap:6px; }
+  .flex-nav-item.active { background:var(--navy-light); color:var(--navy-mid); font-weight:700; border-right:2px solid var(--blue); }
+  .flex-nav-item .new-badge { font-size:9px; background:#EF4444; color:#fff; border-radius:3px; padding:0 4px; font-weight:700; }
+  .flex-main { padding:12px; display:flex; flex-direction:column; gap:10px; }
+  .flex-section-title { font-size:11px; font-weight:700; color:var(--gray-800); padding-bottom:4px; border-bottom:1px solid var(--gray-200); margin-bottom:2px; }
+  .flex-todo-item { background:#fff; border:1px solid var(--gray-200); border-radius:6px; padding:8px 10px; display:flex; align-items:center; gap:8px; }
+  .flex-todo-item.highlight { border-color:#3B82F6; box-shadow:0 0 0 2px rgba(59,130,246,.15); }
+  .flex-circle { width:14px; height:14px; border-radius:50%; border:1.5px solid var(--gray-400); flex-shrink:0; }
+  .flex-todo-text { flex:1; font-size:11px; color:var(--gray-800); }
+  .flex-todo-tag { font-size:10px; background:var(--navy-light); color:var(--navy-mid); border-radius:4px; padding:1px 6px; font-weight:600; }
+  .flex-todo-date { font-size:10px; color:var(--red); font-weight:600; }
+  .flex-arrow-indicator { font-size:16px; color:#3B82F6; margin-right:2px; }
+
+  .flex-form { background:#fff; border:1px solid var(--gray-200); border-radius:6px; padding:12px; display:flex; flex-direction:column; gap:8px; }
+  .flex-form-title { font-size:11px; font-weight:700; color:var(--gray-800); padding-bottom:6px; border-bottom:1px solid var(--gray-100); }
+  .flex-form-row { display:flex; align-items:flex-start; gap:8px; }
+  .flex-form-label { font-size:10px; color:var(--gray-400); font-weight:600; min-width:70px; padding-top:2px; }
+  .flex-form-val { font-size:11px; color:var(--gray-800); background:var(--gray-50); border:1px solid var(--gray-200); border-radius:4px; padding:3px 8px; flex:1; }
+  .flex-form-val.highlight { border-color:#3B82F6; background:#EFF6FF; color:var(--blue-text); font-weight:600; }
+  .flex-goal-row { display:flex; align-items:center; gap:8px; background:var(--gray-50); border-radius:5px; padding:6px 8px; }
+  .flex-goal-name { flex:1; font-size:11px; color:var(--gray-800); }
+  .flex-goal-pct { font-size:11px; font-weight:700; color:var(--blue-text); background:var(--blue-light); border-radius:4px; padding:2px 8px; }
+  .flex-btn-row { display:flex; gap:6px; justify-content:flex-end; margin-top:4px; }
+  .flex-btn { padding:5px 12px; border-radius:5px; font-size:11px; font-weight:700; font-family:'Noto Sans KR',sans-serif; cursor:default; }
+  .flex-btn-reject { background:#F3F4F6; color:var(--gray-600); border:1px solid var(--gray-200); }
+  .flex-btn-approve { background:#10B981; color:#fff; border:none; }
+  .flex-rating-row { display:flex; align-items:center; gap:6px; }
+  .flex-rating-label { font-size:10px; color:var(--gray-600); min-width:130px; }
+  .flex-rating-dots { display:flex; gap:4px; }
+  .flex-dot { width:14px; height:14px; border-radius:50%; border:1.5px solid var(--gray-300); background:#fff; }
+  .flex-dot.filled { background:var(--blue); border-color:var(--blue); }
+  .guide-note { font-size:11px; color:var(--amber-text); background:var(--amber-light); border:1px solid #FDE68A; border-radius:5px; padding:7px 10px; line-height:1.6; margin-top:6px; }
+  .guide-note strong { font-weight:700; }
+
   .footer { max-width:880px; margin:0 auto; padding:0 24px 32px; text-align:center; font-size:12px; color:var(--gray-400); }
 
   @media (max-width:600px) {
@@ -305,13 +363,13 @@
     <div class="eval-overview">
       <div class="eval-overview-title">🐣 수습 평가 절차 한눈에 보기</div>
       <div class="eval-flow">
-        <div class="eval-flow-item">① 목표 설정<small>조직장</small></div>
+        <div class="eval-flow-item">① 목표 설정<small>입사 1개월</small></div>
         <div class="eval-flow-arrow">→</div>
-        <div class="eval-flow-item">② 평가 항목 설정<small>수습 대상자</small></div>
+        <div class="eval-flow-item">② 평가 항목 설정<small>입사 2주 이내</small></div>
         <div class="eval-flow-arrow">→</div>
-        <div class="eval-flow-item">③ 1차 수습 평가<small>입사 1.5개월</small></div>
+        <div class="eval-flow-item">③ 1차 평가<small>입사 1.5개월</small></div>
         <div class="eval-flow-arrow">→</div>
-        <div class="eval-flow-item">③ 2차 수습 평가<small>입사 2.5개월</small></div>
+        <div class="eval-flow-item">③ 2차 평가<small>입사 2.5개월</small></div>
         <div class="eval-flow-arrow">→</div>
         <div class="eval-flow-item">④ 결과 확정<small>HR 미팅</small></div>
       </div>
@@ -336,7 +394,7 @@
 
     <div class="eval-steps">
 
-      <!-- STEP 1 -->
+      <!-- ─── STEP 1 목표 설정 ─── -->
       <div class="eval-step">
         <div class="eval-step-header">
           <div class="eval-step-badge">1</div>
@@ -344,41 +402,65 @@
         </div>
         <div class="eval-step-body">
           <div class="eval-step-desc">
-            <strong>1차 조직장</strong>이 수습 기간 동안 수습자가 달성할 목표를 설정하고, 각 목표별 가중치를 안내합니다.<br>
-            <span style="font-size:12px;color:var(--gray-400)">※ 가중치는 업무 중요도 및 업무량 등에 따라 설정합니다.</span>
+            <strong>1차 조직장</strong>이 Flex에서 수습자의 수습 목표를 생성합니다. 목표별 가중치는 업무 중요도 및 업무량에 따라 설정합니다.
           </div>
-        </div>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="eval-step">
-        <div class="eval-step-header">
-          <div class="eval-step-badge">2</div>
-          <div class="eval-step-title">평가 항목 설정</div>
-        </div>
-        <div class="eval-step-body">
-          <div class="eval-step-desc">
-            <strong>수습 대상자</strong>는 1차 조직장이 설정한 목표를 확인한 후, 목표 평가 항목 및 가중치를 <strong>1차 조직장에게 승인 요청</strong>합니다.
-          </div>
-          <div class="eval-info-box">
-            <div class="eval-info-row">
-              <div class="eval-info-label">시기</div>
-              <div class="eval-info-val">입사 후 <strong>2주 이내</strong></div>
-            </div>
-            <hr class="eval-info-divider">
-            <div class="eval-info-row">
-              <div class="eval-info-label">경로</div>
-              <div class="eval-info-val">
-                <div class="eval-path">
-                  <span class="eval-path-step">Flex</span>
-                  <span class="eval-path-arrow">→</span>
-                  <span class="eval-path-step">할일 (또는 홈피드)</span>
-                  <span class="eval-path-arrow">→</span>
-                  <span class="eval-path-step">평가 항목 작성 요청</span>
-                  <span class="eval-path-arrow">→</span>
-                  <span class="eval-path-step">목표 연동 및 가중치 입력</span>
-                  <span class="eval-path-arrow">→</span>
-                  <span class="eval-path-step">승인 요청</span>
+          <!-- 가이드 토글 -->
+          <div class="guide-toggle-wrap">
+            <button class="guide-toggle-btn" onclick="toggleGuide(this)">
+              📱 Flex 사용 가이드 보기 <span class="g-arrow">▼</span>
+            </button>
+            <div class="guide-content">
+              <div class="guide-role-tabs">
+                <button class="guide-role-tab active" onclick="switchGuideTab(this,'s1-mem')">👤 수습자 확인</button>
+                <button class="guide-role-tab" onclick="switchGuideTab(this,'s1-org')">📋 조직장 (목표 생성)</button>
+              </div>
+              <!-- 수습자 -->
+              <div class="guide-role-pane active" id="s1-mem">
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:10px;">1차 조직장이 목표를 생성하면 Flex에서 확인할 수 있습니다.</div>
+                <div class="flex-screen">
+                  <div class="flex-screen-top">
+                    <div class="flex-logo">flex</div>
+                    <div class="flex-breadcrumb">포트로직스 <span>목표</span> → 전체 목표</div>
+                  </div>
+                  <div class="flex-screen-body">
+                    <div class="flex-nav">
+                      <div class="flex-nav-item">홈 피드</div>
+                      <div class="flex-nav-item">구성원</div>
+                      <div class="flex-nav-item">원온원</div>
+                      <div class="flex-nav-item active">목표 <span class="new-badge">NEW</span></div>
+                    </div>
+                    <div class="flex-main">
+                      <div class="flex-section-title">전체 목표</div>
+                      <div class="flex-todo-item highlight">
+                        <span style="font-size:13px">🎯</span>
+                        <div class="flex-todo-text">[HR] 수습 목표 — OOO님 수습 목표</div>
+                      </div>
+                      <div style="font-size:11px;color:var(--gray-400);padding:4px 2px;">→ 클릭하여 하위 목표 및 가중치 확인</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 조직장 -->
+              <div class="guide-role-pane" id="s1-org">
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:10px;">
+                  경로: <strong>Flex → 목표 → OOO님 수습 목표 → 하위 목표 → 새 하위 목표 추가</strong>
+                </div>
+                <div class="flex-screen">
+                  <div class="flex-screen-top">
+                    <div class="flex-logo">flex</div>
+                    <div class="flex-breadcrumb">목표 제목 입력</div>
+                  </div>
+                  <div class="flex-main" style="background:#fff;">
+                    <div class="flex-form">
+                      <div class="flex-form-title">목표 생성 항목</div>
+                      <div class="flex-form-row"><div class="flex-form-label">목표 이름*</div><div class="flex-form-val">수습 목표명 작성</div></div>
+                      <div class="flex-form-row"><div class="flex-form-label">담당 주체*</div><div class="flex-form-val highlight">수습자</div></div>
+                      <div class="flex-form-row"><div class="flex-form-label">참여 멤버</div><div class="flex-form-val highlight">평가자 (1차 리더)</div></div>
+                      <div class="flex-form-row"><div class="flex-form-label">기간*</div><div class="flex-form-val">수습기간 3개월</div></div>
+                      <div class="flex-form-row"><div class="flex-form-label">업데이트 방식*</div><div class="flex-form-val">직접 입력</div></div>
+                      <div class="flex-form-row"><div class="flex-form-label">공개 범위</div><div class="flex-form-val highlight">일부에게 공개</div></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -386,7 +468,113 @@
         </div>
       </div>
 
-      <!-- STEP 3 -->
+      <!-- ─── STEP 2 평가 항목 설정 ─── -->
+      <div class="eval-step">
+        <div class="eval-step-header">
+          <div class="eval-step-badge">2</div>
+          <div class="eval-step-title">평가 항목 설정 및 승인</div>
+        </div>
+        <div class="eval-step-body">
+          <div class="eval-step-desc">
+            <strong>수습 대상자</strong>가 1차 조직장이 설정한 목표를 연동하고 가중치를 입력한 후 <strong>승인 요청</strong>합니다. 조직장은 이를 검토 후 승인 또는 반려합니다.
+          </div>
+          <div class="eval-info-box">
+            <div class="eval-info-row">
+              <div class="eval-info-label">시기</div>
+              <div class="eval-info-val">입사 후 <strong>2주 이내</strong></div>
+            </div>
+          </div>
+          <div class="guide-toggle-wrap">
+            <button class="guide-toggle-btn" onclick="toggleGuide(this)">
+              📱 Flex 사용 가이드 보기 <span class="g-arrow">▼</span>
+            </button>
+            <div class="guide-content">
+              <div class="guide-role-tabs">
+                <button class="guide-role-tab active" onclick="switchGuideTab(this,'s2-mem')">👤 수습자 (항목 작성)</button>
+                <button class="guide-role-tab" onclick="switchGuideTab(this,'s2-org')">📋 조직장 (승인)</button>
+              </div>
+              <!-- 수습자 -->
+              <div class="guide-role-pane active" id="s2-mem">
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:10px;">
+                  경로: <strong>Flex → 홈피드(할 일) → 평가 항목 작성 요청 → 목표 연동 및 가중치 입력 → 승인 요청</strong>
+                </div>
+                <div class="flex-screen">
+                  <div class="flex-screen-top">
+                    <div class="flex-logo">flex</div>
+                    <div class="flex-breadcrumb">홈 피드 <span>할 일</span></div>
+                  </div>
+                  <div class="flex-screen-body">
+                    <div class="flex-nav">
+                      <div class="flex-nav-item active">홈 피드</div>
+                      <div class="flex-nav-item">구성원</div>
+                    </div>
+                    <div class="flex-main">
+                      <div class="flex-section-title">해야할 일</div>
+                      <div class="flex-todo-item" style="opacity:.5"><div class="flex-circle"></div><div class="flex-todo-text">셀프 평가 작성 요청</div><div class="flex-todo-tag">[수습] 1차</div></div>
+                      <div class="flex-todo-item highlight">
+                        <span class="flex-arrow-indicator">→</span>
+                        <div class="flex-circle"></div>
+                        <div class="flex-todo-text"><strong>평가 항목 작성 요청</strong></div>
+                        <div class="flex-todo-tag">[수습] 1차</div>
+                        <div class="flex-todo-date">오늘까지</div>
+                      </div>
+                      <div style="height:8px"></div>
+                      <div class="flex-form">
+                        <div class="flex-form-title">성과 항목 (목표 연동 및 가중치 입력)</div>
+                        <div class="flex-goal-row"><div class="flex-goal-name">🎯 수습 목표 1</div><div class="flex-goal-pct">60%</div></div>
+                        <div class="flex-goal-row"><div class="flex-goal-name">🎯 수습 목표 2</div><div class="flex-goal-pct">40%</div></div>
+                        <div style="font-size:10px;color:var(--gray-400);margin-top:2px;">※ 가중치 합계가 100%가 되도록 입력</div>
+                        <div class="flex-btn-row"><div class="flex-btn flex-btn-approve">승인 요청</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 조직장 -->
+              <div class="guide-role-pane" id="s2-org">
+                <div style="font-size:12px;color:var(--gray-600);margin-bottom:10px;">
+                  경로: <strong>Flex → 홈피드 → 해야할 일 → 평가 항목 승인 요청 확인 → 승인 or 반려</strong>
+                </div>
+                <div class="guide-note">⚠ <strong>팀원이 평가 항목 작성을 완료하면 조직장에게 자동 발송됩니다.</strong><br>해야할 일에 승인 요청이 없다면, 팀원에게 진행을 요청해 주세요.</div>
+                <div class="flex-screen" style="margin-top:10px;">
+                  <div class="flex-screen-top">
+                    <div class="flex-logo">flex</div>
+                    <div class="flex-breadcrumb">홈 피드 <span>할 일</span></div>
+                  </div>
+                  <div class="flex-screen-body">
+                    <div class="flex-nav">
+                      <div class="flex-nav-item active">홈 피드</div>
+                      <div class="flex-nav-item">구성원</div>
+                    </div>
+                    <div class="flex-main">
+                      <div class="flex-section-title">해야할 일</div>
+                      <div class="flex-todo-item highlight">
+                        <span class="flex-arrow-indicator">→</span>
+                        <div class="flex-circle"></div>
+                        <div class="flex-todo-text"><strong>평가 항목 승인 요청</strong></div>
+                        <div class="flex-todo-tag">[수습] 1차</div>
+                        <div class="flex-todo-date">오늘까지</div>
+                      </div>
+                      <div style="height:8px"></div>
+                      <div class="flex-form">
+                        <div class="flex-form-title">OOO님의 평가 항목 — [수습] 1차 수습 평가</div>
+                        <div class="flex-goal-row"><div class="flex-goal-name">수습 목표 1</div><div class="flex-goal-pct">60%</div></div>
+                        <div class="flex-goal-row"><div class="flex-goal-name">수습 목표 2</div><div class="flex-goal-pct">40%</div></div>
+                        <div class="flex-btn-row">
+                          <div class="flex-btn flex-btn-reject">반려</div>
+                          <div class="flex-btn flex-btn-approve">✓ 승인</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── STEP 3 차수별 평가 ─── -->
       <div class="eval-step">
         <div class="eval-step-header">
           <div class="eval-step-badge">3</div>
@@ -395,28 +583,114 @@
         <div class="eval-step-body">
 
           <div class="eval-sub-section">
-            <div class="eval-sub-title">(1) 차수별 셀프 평가 작성</div>
-            <div class="eval-step-desc">셀프 평가 작성 요청 확인 후, 인사팀에서 안내한 기간에 맞춰 작성합니다.</div>
+            <div class="eval-sub-title">(1) 셀프 평가 작성 + 목표 달성도 업데이트</div>
+            <div class="eval-step-desc">수습 대상자가 셀프 평가를 작성하며, 동시에 목표 달성도(진척도)를 업데이트합니다.</div>
             <div class="eval-info-box">
               <div class="eval-info-row">
                 <div class="eval-info-label">시기</div>
-                <div class="eval-info-val">
-                  <strong>1차</strong> — 입사 후 1.5개월 차<br>
-                  <strong>2차</strong> — 입사 후 2.5개월 차
-                </div>
+                <div class="eval-info-val"><strong>1차</strong> — 입사 후 1.5개월 차 &nbsp;·&nbsp; <strong>2차</strong> — 입사 후 2.5개월 차</div>
               </div>
               <hr class="eval-info-divider">
               <div class="eval-info-row">
                 <div class="eval-info-label">경로</div>
                 <div class="eval-info-val">
                   <div class="eval-path">
-                    <span class="eval-path-step">Flex</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">홈 피드 (알림)</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">셀프 평가 작성 요청</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">작성</span>
+                    <span class="eval-path-step">Flex</span><span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">홈 피드 (알림)</span><span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">셀프 평가 작성 요청</span><span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">작성</span><span class="eval-path-arrow">→</span>
+                    <span class="eval-path-step">목표 선택 → 달성도 기재</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="guide-toggle-wrap">
+              <button class="guide-toggle-btn" onclick="toggleGuide(this)">
+                📱 셀프 평가 Flex 가이드 보기 <span class="g-arrow">▼</span>
+              </button>
+              <div class="guide-content">
+                <div class="guide-role-tabs">
+                  <button class="guide-role-tab active" onclick="switchGuideTab(this,'s3-mem')">👤 수습자 (셀프 평가)</button>
+                  <button class="guide-role-tab" onclick="switchGuideTab(this,'s3-org')">📋 조직장 (하향 평가)</button>
+                </div>
+                <!-- 수습자 셀프 평가 -->
+                <div class="guide-role-pane active" id="s3-mem">
+                  <div class="guide-note" style="margin-bottom:10px;">※ <strong>셀프 평가 작성 시 목표 달성도(진척도)도 반드시 업데이트</strong>해 주세요.</div>
+                  <div class="flex-screen">
+                    <div class="flex-screen-top">
+                      <div class="flex-logo">flex</div>
+                      <div class="flex-breadcrumb">홈 피드 <span>셀프 평가 작성</span></div>
+                    </div>
+                    <div class="flex-screen-body">
+                      <div class="flex-nav">
+                        <div class="flex-nav-item active">홈 피드</div>
+                        <div class="flex-nav-item">구성원</div>
+                      </div>
+                      <div class="flex-main">
+                        <div class="flex-todo-item highlight">
+                          <span class="flex-arrow-indicator">→</span>
+                          <div class="flex-circle"></div>
+                          <div class="flex-todo-text"><strong>셀프 평가 작성 요청</strong></div>
+                          <div class="flex-todo-tag">[수습] 1차</div>
+                        </div>
+                        <div style="height:6px"></div>
+                        <div class="flex-form">
+                          <div class="flex-form-title">🟡 목표 진척 사항 공유</div>
+                          <div class="flex-goal-row">
+                            <div class="flex-goal-name">수습 목표 1 <span style="font-size:10px;color:var(--gray-400)">(연결된 목표 60%)</span></div>
+                            <div class="flex-form-val highlight" style="max-width:80px;text-align:center;">점수 입력</div>
+                          </div>
+                          <div class="flex-goal-row">
+                            <div class="flex-goal-name">수습 목표 2 <span style="font-size:10px;color:var(--gray-400)">(연결된 목표 40%)</span></div>
+                            <div class="flex-form-val highlight" style="max-width:80px;text-align:center;">점수 입력</div>
+                          </div>
+                          <div class="flex-form-title" style="margin-top:8px;">🟡 업무 만족도 및 피드백</div>
+                          <div class="flex-form-row" style="flex-direction:column;gap:4px;">
+                            <div style="font-size:10px;color:var(--gray-600);">수습 기간 동안 성취감이 높았던/낮았던 업무는?</div>
+                            <div class="flex-form-val" style="height:32px;color:var(--gray-400);font-style:italic;">코멘트</div>
+                          </div>
+                          <div class="flex-form-row" style="flex-direction:column;gap:4px;">
+                            <div style="font-size:10px;color:var(--gray-600);">업무 태도 및 역량에서 강점과 부족했던 점은?</div>
+                            <div class="flex-form-val" style="height:32px;color:var(--gray-400);font-style:italic;">코멘트</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 조직장 하향 평가 -->
+                <div class="guide-role-pane" id="s3-org">
+                  <div style="font-size:12px;color:var(--gray-600);margin-bottom:8px;">
+                    경로: <strong>Flex → 홈 피드 → 해야할 일 → 하향 평가 작성 요청 → 작성</strong>
+                  </div>
+                  <div class="guide-note" style="margin-bottom:10px;">팀원의 셀프 평가는 우측 <strong>참고자료 패널</strong>에서 확인할 수 있습니다. 반드시 셀프 평가를 참고하여 작성해 주세요.<br>※ <strong>2차 평가 결과 A등급 이상</strong>인 경우에만 수습 합격으로 진행됩니다.</div>
+                  <div class="flex-screen">
+                    <div class="flex-screen-top">
+                      <div class="flex-logo">flex</div>
+                      <div class="flex-breadcrumb">홈 피드 <span>하향 평가 작성</span></div>
+                    </div>
+                    <div class="flex-screen-body">
+                      <div class="flex-nav">
+                        <div class="flex-nav-item active">홈 피드</div>
+                        <div class="flex-nav-item">구성원</div>
+                      </div>
+                      <div class="flex-main">
+                        <div class="flex-todo-item highlight">
+                          <span class="flex-arrow-indicator">→</span>
+                          <div class="flex-circle"></div>
+                          <div class="flex-todo-text"><strong>하향 1차 평가 작성 요청</strong></div>
+                          <div class="flex-todo-tag">[수습] 1차</div>
+                        </div>
+                        <div style="height:6px"></div>
+                        <div class="flex-form">
+                          <div class="flex-form-title">🟡 업무 수행 능력</div>
+                          <div class="flex-rating-row"><div class="flex-rating-label">담당 업무 수행에 필요한 기본 지식을 갖추고 있나요?</div><div class="flex-rating-dots"><div class="flex-dot"></div><div class="flex-dot"></div><div class="flex-dot filled"></div><div class="flex-dot"></div><div class="flex-dot"></div></div></div>
+                          <div class="flex-rating-row" style="margin-top:4px;"><div class="flex-rating-label">업무 목적·배경을 이해하고 방향을 설정하나요?</div><div class="flex-rating-dots"><div class="flex-dot"></div><div class="flex-dot filled"></div><div class="flex-dot"></div><div class="flex-dot"></div><div class="flex-dot"></div></div></div>
+                          <div class="flex-form-title" style="margin-top:8px;">🟡 근무 태도 &nbsp;·&nbsp; 🟡 성장 및 개선의지</div>
+                          <div style="font-size:10px;color:var(--gray-400);">각 항목 1~5점으로 평가</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -424,87 +698,50 @@
           </div>
 
           <div class="eval-sub-section">
-            <div class="eval-sub-title">(2) 목표 달성도 업데이트</div>
-            <div class="eval-step-desc">셀프 평가 작성 시 목표 달성도를 함께 업데이트합니다.</div>
+            <div class="eval-sub-title">(2) 2차 조직장 최종 하향 평가</div>
+            <div class="eval-step-desc">1차 조직장 평가 완료 후, <strong>2차 조직장(본부장)</strong>이 팀원 셀프 평가 & 1차 평가를 토대로 최종 평가를 진행합니다.</div>
             <div class="eval-info-box">
               <div class="eval-info-row">
-                <div class="eval-info-label">시기</div>
+                <div class="eval-info-label">절차</div>
                 <div class="eval-info-val">
-                  <strong>1차</strong> — 1차 셀프 평가 작성 시 목표 선택 후 달성도 업데이트<br>
-                  <strong>2차</strong> — 2차 셀프 평가 작성 시 목표 선택 후 달성도 업데이트
-                </div>
-              </div>
-              <hr class="eval-info-divider">
-              <div class="eval-info-row">
-                <div class="eval-info-label">경로</div>
-                <div class="eval-info-val">
-                  <div class="eval-path">
-                    <span class="eval-path-step">Flex</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">홈 피드 (알림)</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">셀프 평가 작성 요청</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">작성</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">목표 선택</span>
-                    <span class="eval-path-arrow">→</span>
-                    <span class="eval-path-step">달성도 기재</span>
-                  </div>
+                  (1차) 셀프 평가 & 하향 평가 → (2차) 셀프 평가 & 하향 평가 → <strong>본부장 최종 하향 평가</strong>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 평가 항목 설명 -->
-          <div style="background:var(--amber-light);border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:12px 14px;font-size:12px;color:var(--amber-text);line-height:1.7;">
-            <strong style="display:block;margin-bottom:6px;">평가 항목 안내</strong>
-            · <strong>셀프 평가</strong> — 팀원이 업무 만족도 및 피드백 사항 등을 기록하여 조직장에게 공유<br>
-            · <strong>1차 조직장 하향 평가</strong> — 팀원의 셀프 평가를 토대로 1차 조직장이 평가 진행<br>
-            &nbsp;&nbsp;평가 항목: 업무 수행 능력 / 근무 태도 / 성장 및 개선의지<br>
-            · <strong>2차 조직장 하향 평가</strong> — 팀원 셀프 평가 & 1차 조직장 평가를 토대로 2차 조직장이 최종 평가 진행
-          </div>
-
         </div>
       </div>
 
-      <!-- STEP 4 -->
+      <!-- ─── STEP 4 평가 결과 ─── -->
       <div class="eval-step">
         <div class="eval-step-header">
           <div class="eval-step-badge">4</div>
           <div class="eval-step-title">평가 결과 확정</div>
         </div>
         <div class="eval-step-body">
-          <div class="eval-step-desc">1차·2차 조직장의 수습 평가를 토대로 <strong>HR 미팅</strong>을 진행합니다. (내용: 수습 기간 리뷰 및 수습 결과 안내)</div>
+          <div class="eval-step-desc">1차·2차 조직장의 수습 평가를 토대로 <strong>HR 미팅</strong>을 진행합니다.<br><span style="font-size:12px;color:var(--gray-400)">내용: 수습 기간 리뷰 및 수습 결과 안내</span></div>
           <div class="eval-result-grid">
             <div class="eval-result-card pass">
-              <div class="eval-result-label">✓ 정규직 전환</div>
+              <div class="eval-result-label">✓ 정규직 전환 (A등급 이상)</div>
               <div class="eval-result-list">
-                <div class="eval-result-item">수습 결과 <strong>A등급 이상</strong>인 자에 한하여 상호 협의 하에 계속 근무 진행</div>
-                <div class="eval-result-item">정규직 입사자의 경우 정규직 전환 계약 진행</div>
+                <div class="eval-result-item">수습 결과 A등급 이상인 자에 한하여 상호 협의 하에 계속 근무 진행 <span style="font-size:10px;color:var(--gray-400)">(파견직 제외)</span></div>
+                <div class="eval-result-item">정규직 입사자의 경우 근로계약서 재작성 진행</div>
                 <div class="eval-result-item">수습 종료 축하 키트 지급</div>
               </div>
             </div>
             <div class="eval-result-card fail">
-              <div class="eval-result-label">✕ 수습 종료</div>
+              <div class="eval-result-label">✕ 수습 종료 (A등급 미만)</div>
               <div class="eval-result-list">
-                <div class="eval-result-item">수습 결과 <strong>A등급 미만</strong>인 경우 수습 및 파견계약 종료</div>
+                <div class="eval-result-item">수습 결과 A등급 미만인 경우 수습 및 근로 계약 종료</div>
                 <div class="eval-result-item">수습 종료 미팅 후 퇴직 미팅 진행</div>
                 <div class="eval-result-item">퇴직 관련 사항 별도 안내</div>
               </div>
             </div>
           </div>
-
-          <!-- PDF 가이드 -->
-          <div style="margin-top:4px;">
-            <div style="font-size:12px;font-weight:700;color:var(--gray-600);margin-bottom:8px;">📎 평가 가이드 다운로드</div>
-            <div class="eval-pdf-row">
-              <span class="eval-pdf-btn">📄 평가자용 수습 평가 가이드 (PDF)</span>
-              <span class="eval-pdf-btn">📄 피평가자용 수습 평가 가이드 (PDF)</span>
-            </div>
-            <div style="font-size:11px;color:var(--gray-400);margin-top:6px;">※ PDF 파일은 별도 공유 예정입니다.</div>
+          <div style="margin-top:10px;padding:10px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px;color:var(--gray-600);">
+            수습 진행 절차 및 관련 내용에 문의 사항이 있으시면 <strong>인사팀</strong>으로 문의해 주세요.
           </div>
-
         </div>
       </div>
 
@@ -793,6 +1030,22 @@ function switchSection(name, btn) {
   document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById(`panel-${name}`).classList.add('active');
+}
+
+function toggleGuide(btn) {
+  const content = btn.nextElementSibling;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.g-arrow').textContent = isOpen ? '▼' : '▲';
+}
+
+function switchGuideTab(tab, paneId) {
+  const wrap = tab.closest('.guide-content');
+  wrap.querySelectorAll('.guide-role-tab').forEach(t => t.classList.remove('active'));
+  wrap.querySelectorAll('.guide-role-pane').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById(paneId).classList.add('active');
 }
 
 /* 초기 렌더 */
